@@ -5,6 +5,6 @@ Task 1.1: Terraform code to create cloud objects for 3 tiered application
 
 Task 1.2: Terraform code to create and run application, docker composes and containers can be found on hosted on https://github.com/achintya96/cisco-live-2022-aws-containers 
 
-
+Task 2: Ansible code to create on-prem objects and associate services for the 3 tiered application
 
 Please reach out to achintya96 or sabaroof for any questions/comments 
