@@ -1,4 +1,4 @@
-ndo_creds: {user: "CLUS-user01", pass: "{{ ndo_user01 }}"}
+ndo_creds: {user: "CLUS-userXX", pass: "{{ ndo_user }}"}
 ndo_host: 198.19.202.12
 ndo_tenant: DEVNET_CLUS_TENANT_01
 ndo_template: DEVNET_CLUS_TEMPLATE
