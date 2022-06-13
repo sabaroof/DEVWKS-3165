@@ -1,3 +1,3 @@
-apic_creds: {user: "CLUS-user01", pass: "{{ apic_user01 }}"}
+apic_creds: {user: "CLUS-userXX", pass: "{{ apic-user }}"}
 apic_host: 198.19.202.66
-apic_tenant: CLUS-user01
+apic_tenant: CLUS-userXX
