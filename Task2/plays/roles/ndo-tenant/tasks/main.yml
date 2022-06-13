@@ -1,0 +1,126 @@
+- name: Create a template
+  cisco.mso.mso_schema_template:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    tenant: '{{ ndo_tenant }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    state: present
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Associate the on prem site with the template
+  cisco.mso.mso_schema_site:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    site: '{{ ndo_site_onprem }}'
+    template: '{{ ndo_template }}'
+    state: present
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Create a VRF
+  cisco.mso.mso_schema_template_vrf:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    vrf: '{{ ndo_vrf }}'
+    state: present
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Create an ANP
+  cisco.mso.mso_schema_template_anp:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    anp: '{{ ndo_anp }}'
+    state: present
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Configure the template to deploy the BDs
+  cisco.mso.mso_schema_template_bd:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    bd: "{{ vars['ndo_bd_' ~ item] }}"
+    vrf:
+      name: '{{ ndo_vrf }}'
+    state: present
+    validate_certs: no
+  delegate_to: localhost
+  with_items: "{{ service }}"
+
+- name: Configure the template to deploy the subnets
+  cisco.mso.mso_schema_template_bd_subnet:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    bd: "{{ vars['ndo_bd_' ~ item] }}"
+    subnet: "{{ vars['ndo_bd_' ~ item ~ '_gw'] }}/{{ vars['ndo_bd_' ~ item ~ '_gw_mask'] }}"
+    state: present
+    validate_certs: no 
+  delegate_to: localhost
+  with_items: "{{ service }}"
+
+- name: Create EPGs
+  cisco.mso.mso_schema_template_anp_epg:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    anp: '{{ ndo_anp }}'
+    epg: "{{ vars['ndo_epg_' ~ item] }}"
+    bd:
+      name: "{{ vars['ndo_bd_' ~ item] }}"
+    vrf:
+      name: '{{ ndo_vrf }}'
+    state: present
+    validate_certs: no  
+  delegate_to: localhost
+  with_items: "{{ service }}"
+
+- name: Attach the VMM domain to the created EPGs
+  cisco.mso.mso_schema_site_anp_epg_domain:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    site: '{{ ndo_site_onprem }}'
+    anp: '{{ ndo_anp }}'
+    epg: "{{ vars['ndo_epg_' ~ item] }}"
+    domain_association_type: vmmDomain
+    domain_profile: '{{ ndo_vmm }}'
+    deployment_immediacy: immediate
+    resolution_immediacy: immediate
+    enhanced_lagpolicy_name: '{{ ndo_lag }}'
+    enhanced_lagpolicy_dn: 'uni/vmmp-VMware/dom-{{ndo_vmm}}/vswitchpolcont/enlacplagp-{{ndo_lag}}'
+    state: present
+    validate_certs: no
+  delegate_to: localhost
+  with_items: "{{ service }}"  
+
+- name: Deploy a schema template
+  cisco.mso.mso_schema_template_deploy:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    state: deploy
+    validate_certs: no
+  delegate_to: localhost

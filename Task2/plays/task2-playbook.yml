@@ -1,0 +1,29 @@
+- name: Creating the on-prem ACI objects via NDO
+  hosts: ndo
+  gather_facts: false
+  connection: httpapi
+
+  roles:
+    - { role: ndo-tenant, service: frontend }
+    - { role: ndo-tenant, service: backend }
+    - { role: ndo-tenant, service: db }
+
+- name: Assigning contracts via NDO
+  hosts: ndo
+  gather_facts: false
+  connection: httpapi
+
+  roles:
+    - { role: contract-creation, provider: backend, consumer: frontend }
+    - { role: contract-creation, provider: db, consumer: backend }
+
+- name: Attaching the portgroups for ProdVM
+  hosts: vcenter
+  gather_facts: false
+  connection: httpapi
+
+  roles:
+    - { role: vm-pg-attachment, vm: prod, service: frontend }
+    - { role: vm-pg-attachment, vm: prod, service: backend }
+    - { role: vm-pg-attachment, vm: prod, service: db }
+    - { role: vm-pg-attachment, vm: test, service: frontend }

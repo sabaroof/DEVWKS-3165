@@ -1,0 +1,36 @@
+before_script:
+  - apt-get update -qy #update system
+  - ansible --version
+  # - ansible-lint --version
+  - export ANSIBLE_HOST_KEY_CHECKING=False
+
+stages:
+  - verify
+  - predeploy
+  - deploy
+
+verify:
+  stage: verify
+  script:
+    # - ansible-lint plays/task2-playbook.yml
+    - ansible-playbook --inventory inventory.ini --syntax-check plays/task2-playbook.yml
+  rules:
+    - if: '$CI_COMMIT_BEFORE_SHA ==  "0000000000000000000000000000000000000000"'
+      when: always
+
+predeploy:
+  stage: predeploy
+  script:
+    - ansible --inventory inventory.ini all -m ping --vault-password-file vault-pass --connection httpapi
+    - ansible --inventory inventory.ini plays/apic-snapshot-playbook.yml --vault-password-file vault-pass
+  rules:
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+      when: always
+
+deploy:
+  stage: deploy
+  script:
+    - ansible-playbook --inventory inventory.ini plays/task2-playbook.yml --vault-password-file vault-pass
+  rules:
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+      when: manual

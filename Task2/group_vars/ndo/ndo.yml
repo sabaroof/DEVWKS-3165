@@ -1,0 +1,32 @@
+ndo_creds: {user: "CLUS-user01", pass: "{{ ndo_user01 }}"}
+ndo_host: 198.19.202.12
+ndo_tenant: DEVNET_CLUS_TENANT_01
+ndo_template: DEVNET_CLUS_TEMPLATE
+ndo_schema: DEVNET_CLUS_SCHEMA_01
+ndo_vrf: CLUS_VRF
+ndo_anp: CLUS_ANP
+ndo_site_onprem: New York
+ndo_vmm: nyc-dvs
+ndo_lag: nyc-lag
+ndo_bd_frontend: BD_Frontend
+ndo_bd_frontend_gw: 20.0.1.1
+ndo_bd_frontend_subnet_cloud: 150.0.1.0/24
+ndo_bd_frontend_gw_mask: 24
+ndo_bd_frontend_subnet_name: frontend_subnet
+ndo_epg_frontend: EPG_Frontend
+ndo_bd_backend: BD_Backend
+ndo_bd_backend_gw: 20.0.2.1
+ndo_bd_backend_subnet_cloud: 150.0.2.0/24
+ndo_bd_backend_gw_mask: 24
+ndo_bd_backend_subnet_name: backend_subnet
+ndo_epg_backend: EPG_Backend
+ndo_bd_db: BD_DB
+ndo_bd_db_gw: 20.0.3.1
+ndo_bd_db_subnet_cloud: 150.0.3.0/24
+ndo_bd_db_gw_mask: 24
+ndo_bd_db_subnet_name: db_subnet
+ndo_epg_db: EPG_DB
+ndo_contract: CLUS_Contract
+ndo_filter: CLUS_AnyFilter
+ndo_filter_entry: CLUS_AnyFilterEntry
+

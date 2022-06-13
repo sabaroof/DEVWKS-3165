@@ -1,0 +1,16 @@
+vc_creds: {user: "aciadmin@vsphere.local", pass: "{{ vc_user01 }}"}
+vc_host: 198.19.202.251
+vc_datacenter: NYC
+vc_prodvm: CLUS_User01_ProdVM
+vc_prodvm_creds: {user: "clusadmin", pass: "{{ vc_user01_prodvm }}"}
+vc_prodvm_mgmt_ip: 198.19.202.5
+vc_prodvm_mac_frontend: 00:50:56:ad:38:8d
+vc_pg_frontend: DEVNET_CLUS_TENANT_01|CLUS_ANP|EPG_Frontend
+vc_prodvm_mac_backend: 00:50:56:ad:df:10
+vc_pg_backend: DEVNET_CLUS_TENANT_01|CLUS_ANP|EPG_Backend
+vc_prodvm_mac_db: 00:50:56:ad:32:25
+vc_pg_db: DEVNET_CLUS_TENANT_01|CLUS_ANP|EPG_DB
+vc_testvm: CLUS_User01_TestVM
+vc_testvm_creds: {user: "clus-test", pass: "{{ vc_user01_testvm }}"}
+vc_testvm_mac_singlepage: 00:50:56:ad:8c:75
+vc_testvm_mac_frontend: 00:50:56:ad:b8:b9

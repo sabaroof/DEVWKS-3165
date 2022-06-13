@@ -1,0 +1,74 @@
+- name: Add a new contract filter
+  cisco.mso.mso_schema_template_contract_filter:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    contract: '{{ ndo_contract }}'
+    contract_scope: vrf
+    filter: '{{ ndo_filter }}'
+    action: permit
+    state: present
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Add a new filter entry
+  cisco.mso.mso_schema_template_filter_entry:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    filter: '{{ ndo_filter }}'
+    entry: '{{ ndo_filter_entry }}'
+    state: present
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Bind the contract to consumer EPG
+  cisco.mso.mso_schema_template_anp_epg_contract:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    anp: '{{ ndo_anp }}'
+    epg: "{{ vars['ndo_epg_' ~ item ] }}"
+    contract:
+      name: '{{ ndo_contract }}'
+      type: consumer
+    state: present
+    validate_certs: no
+  delegate_to: localhost
+  with_items:
+    - "{{ consumer }}"
+
+- name: Bind the contract to provider EPG
+  cisco.mso.mso_schema_template_anp_epg_contract:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    anp: '{{ ndo_anp }}'
+    epg: "{{ vars['ndo_epg_' ~ item ] }}"
+    contract:
+      name: '{{ ndo_contract }}'
+      type: provider
+    state: present
+    validate_certs: no
+  delegate_to: localhost
+  with_items:
+    - "{{ provider }}"
+
+- name: Deploy a schema template
+  cisco.mso.mso_schema_template_deploy:
+    host: '{{ ndo_host }}'
+    username: '{{ ndo_creds.user }}'
+    password: '{{ ndo_creds.pass }}'
+    schema: '{{ ndo_schema }}'
+    template: '{{ ndo_template }}'
+    state: deploy
+    validate_certs: no
+  delegate_to: localhost

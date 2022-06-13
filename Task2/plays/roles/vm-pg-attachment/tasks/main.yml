@@ -1,0 +1,14 @@
+- name: Apply a portgroup to a VM
+  community.vmware.vmware_guest_network:
+    hostname: '{{ vc_host }}'
+    username: '{{ vc_creds.user }}'
+    password: '{{ vc_creds.pass }}'
+    datacenter: '{{ vc_datacenter }}'
+    name: "{{ vars['vc_' ~ item.0 ~ 'vm'] }}"
+    mac_address: "{{ vars['vc_' ~ item.0 ~ 'vm_mac_' ~ item.1 ] }}"
+    network_name: "{{ vars['vc_pg_' ~ item.1] }}"
+    state: present
+    validate_certs: false
+  with_nested:
+    - "{{ vm }}"
+    - "{{ service }}"
