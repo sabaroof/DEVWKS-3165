@@ -26,7 +26,7 @@ provider "aws" {
 
 data "aws_vpcs" "vpc_id" {
   tags = {
-    AciPolicyDnTag = "*TENANT*" # adding filter for our VPC - where XX is the id assigned to you 
+    AciPolicyDnTag = "*Cisco_Live_TENANT*" # adding filter for our VPC - where XX is the id assigned to you 
   }
 }
 
