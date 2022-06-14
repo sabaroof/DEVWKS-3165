@@ -2,7 +2,6 @@ vc_creds: {user: "aciadmin@vsphere.local", pass: "{{ vc_user }}"}
 vc_host: 198.19.202.251
 vc_datacenter: NYC
 vc_prodvm: CLUS_UserXX_ProdVM #edit this value using the shared details
-vc_prodvm_mgmt_ip: 198.19.202.X #edit this value using the shared details
 vc_prodvm_mac_frontend: XX:XX:XX:XX:XX:XX #edit this value using the shared details
 vc_pg_frontend: DEVNET_CLUS_TENANT_XX|CLUS_ANP|EPG_Frontend #edit this value using the shared details
 vc_prodvm_mac_backend: XX:XX:XX:XX:XX:XX #edit this value using the shared details
