@@ -1,14 +1,13 @@
-vc_creds: {user: "aciadmin@vsphere.local", pass: "{{ vc_user01 }}"}
+vc_creds: {user: "aciadmin@vsphere.local", pass: "{{ vc_user }}"}
 vc_host: 198.19.202.251
 vc_datacenter: NYC
-vc_prodvm: CLUS_User01_ProdVM
-vc_prodvm_mgmt_ip: 198.19.202.X
-vc_prodvm_mac_frontend: XX:XX:XX:XX:XX:XX
-vc_pg_frontend: DEVNET_CLUS_TENANT_01|CLUS_ANP|EPG_Frontend
-vc_prodvm_mac_backend: XX:XX:XX:XX:XX:XX
-vc_pg_backend: DEVNET_CLUS_TENANT_01|CLUS_ANP|EPG_Backend
-vc_prodvm_mac_db: XX:XX:XX:XX:XX:XX
-vc_pg_db: DEVNET_CLUS_TENANT_01|CLUS_ANP|EPG_DB
-vc_testvm: CLUS_User01_TestVM
-vc_testvm_mac_singlepage: XX:XX:XX:XX:XX:XX
-vc_testvm_mac_frontend: XX:XX:XX:XX:XX:XX
+vc_prodvm: CLUS_UserXX_ProdVM #edit this value using the shared details
+vc_prodvm_mgmt_ip: 198.19.202.X #edit this value using the shared details
+vc_prodvm_mac_frontend: XX:XX:XX:XX:XX:XX #edit this value using the shared details
+vc_pg_frontend: DEVNET_CLUS_TENANT_XX|CLUS_ANP|EPG_Frontend #edit this value using the shared details
+vc_prodvm_mac_backend: XX:XX:XX:XX:XX:XX #edit this value using the shared details
+vc_pg_backend: DEVNET_CLUS_TENANT_XX|CLUS_ANP|EPG_Backend #edit this value using the shared details
+vc_prodvm_mac_db: XX:XX:XX:XX:XX:XX #edit this value using the shared details
+vc_pg_db: DEVNET_CLUS_TENANT_XX|CLUS_ANP|EPG_DB #edit this value using the shared details
+vc_testvm: CLUS_UserXX_TestVM #edit this value using the shared details
+vc_testvm_mac_frontend: XX:XX:XX:XX:XX:XX #edit this value using the shared details
