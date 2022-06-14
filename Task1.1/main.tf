@@ -8,7 +8,7 @@ data "mso_site" "aws_site" {
 
 
 data "mso_user" "user1" {
-  username = "CLUS-user01"
+  username = "CLUS-userXX"  # XX is your assigned username 
 }
 
 
