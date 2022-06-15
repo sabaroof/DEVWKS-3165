@@ -1,11 +1,11 @@
 #  Values of variables to override default values defined in variables.tf
-#  Please changethe variable values, wherever you see XX to your user ID (assigned value from 01-16)
+
 
 
 aws_site_name = "AWSSite" # the site name for the AWS site as seen on ND
 
 # Remember that the tenant values are stored in Variables.tf, please change them there.
-schema_name = "Cisco_Live_SCHEMA"  # XX is your user name 
+schema_name = "Cisco_Live_SCHEMA"  
 template_name= "Cisco_Live_TEMPLATE"            # use a template name as you wish
 vrf_name      = "CLUS_VRF"                       # use a vrf name as you wish
 anp_name      = "CLUS_ANP"                       # use a ANP name as you wish
