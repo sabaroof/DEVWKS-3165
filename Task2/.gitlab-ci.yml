@@ -1,9 +1,8 @@
 image: sabaroof/ciscolive2022:runner
 
 before_script:
-  - apt-get update -qy #update system
+  - apt-get update -qy
   - ansible --version
-  # - ansible-lint --version
   - export ANSIBLE_HOST_KEY_CHECKING=False
 
 stages:
@@ -14,24 +13,16 @@ stages:
 verify:
   stage: verify
   script:
-    # - ansible-lint plays/task2-playbook.yml
     - ansible-playbook --inventory inventory.ini --syntax-check plays/task2-playbook.yml
-  #rules:
-  # - if: '$CI_COMMIT_BEFORE_SHA ==  "0000000000000000000000000000000000000000"'
-  
 
 predeploy:
   stage: predeploy
   script:
     - ansible --inventory inventory.ini all -m ping --connection httpapi
     - ansible-playbook --inventory inventory.ini plays/apic-snapshot-playbook.yml 
-  #rules:
-  # - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
   
 deploy:
   stage: deploy
   script:
     - ansible-playbook --inventory inventory.ini plays/task2-playbook.yml
-  #rules:
-  # - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
   when: manual

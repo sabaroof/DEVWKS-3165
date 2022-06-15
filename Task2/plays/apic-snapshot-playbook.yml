@@ -8,8 +8,8 @@
     - name: Create a Snapshot
       cisco.aci.aci_config_snapshot:
         host: '{{ apic_host }}'
-        username: '{{ apic_creds.user }}'
-        password: '{{ apic_creds.pass }}'
+        username: '{{ apic_user }}'
+        password: '{{ apic_pass }}'
         state: present
         export_policy: '{{ apic_tenant }}'
         description: Snapshot made by the pipeline.

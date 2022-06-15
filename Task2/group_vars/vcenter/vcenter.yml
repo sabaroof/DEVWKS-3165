@@ -1,4 +1,5 @@
-vc_creds: {user: "aciadmin@vsphere.local", pass: "{{ vc_user }}"}
+vc_user: "aciadmin@vsphere.local"
+vc_pass: "C1sco12345!"
 vc_host: 198.19.202.251
 vc_datacenter: NYC
 vc_prodvm: CLUS_UserXX_ProdVM #edit this value using the shared details

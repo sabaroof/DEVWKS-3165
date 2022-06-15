@@ -1,8 +1,8 @@
 - name: Create a template
   cisco.mso.mso_schema_template:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     tenant: '{{ ndo_tenant }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
@@ -13,8 +13,8 @@
 - name: Associate the on prem site with the template
   cisco.mso.mso_schema_site:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     site: '{{ ndo_site_onprem }}'
     template: '{{ ndo_template }}'
@@ -25,8 +25,8 @@
 - name: Create a VRF
   cisco.mso.mso_schema_template_vrf:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     vrf: '{{ ndo_vrf }}'
@@ -37,8 +37,8 @@
 - name: Create an ANP
   cisco.mso.mso_schema_template_anp:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     anp: '{{ ndo_anp }}'
@@ -49,8 +49,8 @@
 - name: Configure the template to deploy the BDs
   cisco.mso.mso_schema_template_bd:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     bd: "{{ vars['ndo_bd_' ~ item] }}"
@@ -64,8 +64,8 @@
 - name: Configure the template to deploy the subnets
   cisco.mso.mso_schema_template_bd_subnet:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     bd: "{{ vars['ndo_bd_' ~ item] }}"
@@ -78,8 +78,8 @@
 - name: Create EPGs
   cisco.mso.mso_schema_template_anp_epg:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     anp: '{{ ndo_anp }}'
@@ -96,8 +96,8 @@
 - name: Attach the VMM domain to the created EPGs
   cisco.mso.mso_schema_site_anp_epg_domain:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     site: '{{ ndo_site_onprem }}'
@@ -117,8 +117,8 @@
 - name: Deploy a schema template
   cisco.mso.mso_schema_template_deploy:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     state: deploy

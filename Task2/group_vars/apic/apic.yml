@@ -1,3 +1,4 @@
-apic_creds: {user: "CLUS-userXX", pass: "{{ apic-user }}"} #edit this value using the shared details
+apic_user: "CLUS-userXX" #edit this value using the shared details
+apic_pass: "CLUS-userXX-123!" #edit this value using the shared details
 apic_host: 198.19.202.66
 apic_tenant: CLUS-userXX #edit this value using the shared details

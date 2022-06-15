@@ -1,4 +1,5 @@
-ndo_creds: {user: "CLUS-userXX", pass: "{{ ndo_user }}"} #edit this value using the shared details
+ndo_user: "CLUS-userXX" #edit this value using the shared details
+ndo_pass: "CLUS-userXX-123!" #edit this value using the shared details
 ndo_host: 198.19.202.12
 ndo_tenant: DEVNET_CLUS_TENANT_XX #edit this value using the shared details
 ndo_template: DEVNET_CLUS_TEMPLATE_XX #edit this value using the shared details

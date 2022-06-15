@@ -1,8 +1,8 @@
 - name: Add a new contract filter
   cisco.mso.mso_schema_template_contract_filter:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     contract: '{{ ndo_contract }}'
@@ -16,8 +16,8 @@
 - name: Add a new filter entry
   cisco.mso.mso_schema_template_filter_entry:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     filter: '{{ ndo_filter }}'
@@ -29,8 +29,8 @@
 - name: Bind the contract to consumer EPG
   cisco.mso.mso_schema_template_anp_epg_contract:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     anp: '{{ ndo_anp }}'
@@ -47,8 +47,8 @@
 - name: Bind the contract to provider EPG
   cisco.mso.mso_schema_template_anp_epg_contract:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     anp: '{{ ndo_anp }}'
@@ -65,8 +65,8 @@
 - name: Deploy a schema template
   cisco.mso.mso_schema_template_deploy:
     host: '{{ ndo_host }}'
-    username: '{{ ndo_creds.user }}'
-    password: '{{ ndo_creds.pass }}'
+    username: '{{ ndo_user }}'
+    password: '{{ ndo_pass }}'
     schema: '{{ ndo_schema }}'
     template: '{{ ndo_template }}'
     state: deploy
