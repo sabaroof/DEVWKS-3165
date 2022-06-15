@@ -7,4 +7,4 @@ Task 1.2: Terraform code to create and run application. Docker composes and cont
 
 Task 2: Ansible code to create on-prem objects and associate services for the 3 tiered application
 
-Please reach out to achintya96 or sabaroof for any questions/comments 
+Please reach out to achintya96(acmurali@cisco.com) or sabaroof(msabadac@cisco.com) for any questions/comments 
