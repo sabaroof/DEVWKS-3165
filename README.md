@@ -1,4 +1,5 @@
-# DEVWKS-3165- DevOps Approach for Integrating Hybrid Clouds with Cisco ACI, Git, Ansible and Terraform<img width="1620" alt="image" src="https://user-images.githubusercontent.com/19537205/173885995-ea4c1c8e-0ddf-410f-9408-bd967615f378.png">
+# DEVWKS-3165- DevOps Approach for Integrating Hybrid Clouds with Cisco ACI, Git, Ansible and Terraform
+
 
 Repository for Cisco Live 2022's DEVWKS-3165 session
 
